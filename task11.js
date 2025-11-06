@@ -16,7 +16,6 @@ const countByCategory = (array) => {
         
     });
 
-    console.log(category)
 
     const counts = category.reduce((acc, value) => {
 
