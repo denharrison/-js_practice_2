@@ -7,7 +7,17 @@ function func(arg1, arg2) {
 
 function memoFunc(fn, resolver) {
 
-const cach = {}
+  const cach = {} // кэш (хранилище)
+
+  return function (...args) { 
+    const key = resolver ? resolver(...args) : args.join("_"); // Генерируем ключ
+    if (cache[key] !== undefined) {
+      return cache[key]; // Берём из кэша
+    }
+    const result = func(...args); // Считаем
+    cache[key] = result; // Сохраняем
+    return result;
+  };
 
 
 }
